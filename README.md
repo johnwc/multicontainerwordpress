@@ -12,12 +12,12 @@ urlFragment: docker-compose-web-app-sample
 This custom image is based on the 'official image' of [WordPress from Docker Hub](https://hub.docker.com/_/wordpress/).
 
 The following changes have been made in this custom image:
-* [Explicitly uses WordPress 4.9.6, PHP 7.4 and Apache.]()
-* [Adds PHP extension for Redis v4.0.2.]()
+* [Explicitly uses WordPress 5.6, PHP 7.4 and Apache.]()
+* [Adds PHP extension for Redis v5.3.2.]()
 * [Adds Baltimore Cyber Trust Root Certificate file for SSL to MySQL.]()
 * [Uses App Setting for MySQL SSL Certificate Authority certificate in WordPress wp-config.php.]()
 * [Uses App Setting for Redis host name in WordPress wp-config.php.]()
-* [Uses Redis Object Cache 1.3.8 WordPress plugin.]()
+* [Uses Redis Object Cache 2.0.17 WordPress plugin.]()
 
 ## Setting up multi-container configuration for Web App for Containers
 Follow the [tutorial](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-multi-container-app) here.

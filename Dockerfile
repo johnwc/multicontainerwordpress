@@ -42,7 +42,7 @@ RUN chmod -R +x /etc/ssh/ssh_setup.sh; \
    rm -rf /etc/ssh/ssh_setup.sh
 
 #install redis php extension
-ENV PHPREDIS_VERSION=4.0.2
+ENV PHPREDIS_VERSION=5.3.2
 
 RUN docker-php-source extract \
   && curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz \
@@ -64,8 +64,8 @@ RUN a2enmod rewrite expires
 
 VOLUME /var/www/html
 
-ENV WORDPRESS_VERSION 4.9.6
-ENV WORDPRESS_SHA1 40616b40d120c97205e5852c03096115c2fca537
+ENV WORDPRESS_VERSION 5.6
+ENV WORDPRESS_SHA1 db8b75bfc9de27490434b365c12fd805ca6784ce
 
 RUN set -ex; \
 	curl -o wordpress.tar.gz -fSL "https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz"; \
