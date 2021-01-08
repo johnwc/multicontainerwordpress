@@ -28,6 +28,18 @@ RUN set -ex; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*
 
+#install SSH
+RUN apt-get update; \
+     apt-get install --yes --no-install-recommends openssh-server; \
+     echo "root:Docker!" | chpasswd; \
+     rm -f /etc/ssh/sshd_config
+
+COPY sshd_config /etc/ssh/
+COPY ssh_setup.sh /etc/ssh/
+RUN chmod -R +x /etc/ssh/ssh_setup.sh; \
+   (sleep 1;. /etc/ssh/ssh_setup.sh 2>&1 > /dev/null); \
+   rm -rf /etc/ssh/ssh_setup.sh
+
 #install redis php extension
 ENV PHPREDIS_VERSION=4.0.2
 
@@ -55,7 +67,7 @@ RUN a2enmod rewrite expires
 VOLUME /var/www/html
 
 ENV WORDPRESS_VERSION 4.9.6
-ENV WORDPRESS_SHA1 6992f19163e21720b5693bed71ffe1ab17a4533a
+ENV WORDPRESS_SHA1 40616b40d120c97205e5852c03096115c2fca537
 
 RUN set -ex; \
 	curl -o wordpress.tar.gz -fSL "https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz"; \
@@ -64,6 +76,8 @@ RUN set -ex; \
 	tar -xzf wordpress.tar.gz -C /usr/src/; \
 	rm wordpress.tar.gz; \
 	chown -R www-data:www-data /usr/src/wordpress
+
+EXPOSE 80 2222
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
