@@ -12,7 +12,7 @@ urlFragment: docker-compose-web-app-sample
 This custom image is based on the 'official image' of [WordPress from Docker Hub](https://hub.docker.com/_/wordpress/).
 
 The following changes have been made in this custom image:
-* [Explicitly uses WordPress 4.9.5, PHP 7.2 and Apache.]()
+* [Explicitly uses WordPress 4.9.6, PHP 7.4 and Apache.]()
 * [Adds PHP extension for Redis v4.0.2.]()
 * [Adds Baltimore Cyber Trust Root Certificate file for SSL to MySQL.]()
 * [Uses App Setting for MySQL SSL Certificate Authority certificate in WordPress wp-config.php.]()
